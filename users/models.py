@@ -8,24 +8,17 @@ from django.db import models
 
 class UserManager(BaseUserManager):
 
-    def create_user(self, email, password, **extra_fields):
-
-        if not email:
-            raise ValueError(_("The email must be set"))
-        if not password:
-            raise ValueError(_("The password must be set"))
-        email = self.normalize_email(email)
-        user = self.model(email=email, **extra_fields)
+    def create_user(self, username, password, **extra_fields):
+        user = self.model(username=username, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password, **extra_fields):
+    def create_superuser(self, username, password, **extra_fields):
         extra_fields.setdefault('is_active', True)
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
-        super_user = self.create_user(email, password, **extra_fields)
-
+        super_user = self.create_user(username, password, **extra_fields)
         return super_user
 
 
@@ -35,7 +28,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = 'users'
 
     username = models.CharField(max_length=50, unique=True)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, null=True)
     password = models.CharField(max_length=128)
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=50, blank=True)

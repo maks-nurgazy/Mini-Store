@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Products Page{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/list-styles.css' %}">
+{% endblock css %}
+
+{% block content %}
+
+    <h2>Product List</h2>
+
+    <main class="grid">
+        {% for product in product_list %}
+            <article>
+                <img src="{{ product.image.url }}" alt="Sample photo">
+                <div class="text">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.description }}</p>
+                </div>
+                <a href="/products/{{ product.id }}">
+                    <button>Detail</button>
+                </a>
+            </article>
+        {% empty %}
+            <li>No products yet.</li>
+        {% endfor %}
+    </main>
+
+{% endblock content %}
