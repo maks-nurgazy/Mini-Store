@@ -11,9 +11,13 @@ body {
     align-items: center;
 }
 
+.container {
+    width: 50%;
+}
+
 body {
-    display: grid;
-    grid-template-rows: 2fr;
+    /*display: grid;*/
+    /*grid-template-rows: 2fr;*/
     font-family: "Raleway", sans-serif;
     background-color: #01e37f;
 }
@@ -100,7 +104,8 @@ img {
     border: 1px solid #a6a6a6;
     border-radius: 3px;
 }
-.photo-album li::marker{
+
+.photo-album li::marker {
     content: none;
 }
 
@@ -154,7 +159,8 @@ img {
     cursor: pointer;
 
 }
-.variant li::marker{
+
+.variant li::marker {
     content: none;
 }
 
@@ -207,5 +213,7 @@ img {
 .buy--btn:active {
     transform: scale(0.97);
 }
+
+
 
 

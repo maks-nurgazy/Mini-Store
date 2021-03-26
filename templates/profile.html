@@ -1,18 +1,41 @@
 {% extends 'base.html' %}
 
 {% block title %}Profile Page{% endblock title %}
+{% block css %}
+    <style>
+        form{
+            width: 100%;
+            margin-left: 20px;
+        }
+        input{
+            width: 100%;
+            padding: 10px 0;
+            margin-top: 3px;
+        }
+        button{
+            float: right;
+            width: 50%;
+            padding: 10px 20px;
+        }
+    </style>
+{% endblock css %}
+
+
 
 {% block content %}
-    <h2>Profile Page</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% load static %}
-        <img src="{{ form.image.value.url }}" alt="profile-image"/>
+    <div style="display: flex;justify-content: space-between;width: 50%">
+        <div>
+            <h2>Profile Page</h2>
+            <img src="{{ form.image.value.url }}" alt="profile-image"/>
+        </div>
+        <form method="post" enctype="multipart/form-data" style="margin-top: 40px">
+            {% csrf_token %}
+            {% load static %}
+            {{ form.as_p }}
 
-        {{ form.as_p }}
-
-        <button type="submit">Update</button>
-        <br><br>
-        <a href="{% url 'home' %}">Back</a>
-    </form>
+            <button type="submit">Update</button>
+            <br><br>
+            <a href="{% url 'home' %}">Back</a>
+        </form>
+    </div>
 {% endblock content %}

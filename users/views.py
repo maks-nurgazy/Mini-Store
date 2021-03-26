@@ -1,11 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
-from .forms import SignUpForm, ProfileForm
 
-# Sign Up View
-from .models import User, UserProfile
+from .forms import SignUpForm, ProfileForm
+from .models import UserProfile
 
 
 class SignUpView(CreateView):

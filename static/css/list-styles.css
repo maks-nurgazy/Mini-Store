@@ -4,12 +4,14 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 20px;
     align-items: stretch;
+    position: relative;
 }
 
 .grid > article {
     border: 1px solid #ccc;
     box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
     position: relative;
+    overflow: hidden;
 }
 
 .grid > article img {
@@ -20,6 +22,8 @@
 
 .text {
     background: #9be010;
+    height: 100%;
+    min-height: 100px;
 }
 
 .grid button {
@@ -29,13 +33,10 @@
     padding: 10px;
     width: 100%;
     bottom: 0;
+    position: absolute;
 }
 
 .category {
     margin-bottom: 20px;
 }
 
-
-.categories ul {
-    display: flex;
-}

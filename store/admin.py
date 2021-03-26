@@ -1,11 +1,13 @@
 from django.contrib import admin
 
+from store.forms import ProductForm
 from store.models import Product, Category
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'get_category', 'price', 'image')
+    form = ProductForm
+    list_display = ('name', 'get_category', 'price', 'image')
 
     def get_category(self, obj):
         return obj.category.first()
@@ -16,4 +18,4 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description')
+    list_display = ('name', 'slug', 'description')
