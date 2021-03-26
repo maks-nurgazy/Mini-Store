@@ -6,6 +6,9 @@
     <h2>Home</h2>
     {% if user.is_authenticated %}
         <p>You are welcome on Home Page</p>
+        <a href="/products">Products</a>
+        <br>
+        <br>
         <p>Your name is - {{ user.first_name }} {{ user.last_name }}</p>
         <p>Your email is - {{ user.email }}</p>
         <p>Your email is - {{ user.username }}</p>

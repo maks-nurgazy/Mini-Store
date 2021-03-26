@@ -1,22 +1,27 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+from django.views.generic import TemplateView
 
-# Create your views here.
-from django.views.generic import TemplateView, ListView, DetailView
-
-from store.models import Product
+from store.models import Product, Category
 
 
 class HomeView(TemplateView):
     template_name = 'home.html'
 
 
-class ProductListView(ListView):
-    model = Product
-    paginate_by = 100  # if pagination is desired
-    template_name = 'products/product-list.html'
+def category_list(request, category_slug=None):
+    category = None
+    categories = Category.objects.all()
+    products = Product.objects.all()
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products = products.filter(category=category)
+    return render(request, 'products/product-list.html', {
+        'categories': categories,
+        'category': category,
+        'products': products
+    })
 
 
-class ProductDetailView(DetailView):
-    model = Product
-    template_name = 'products/product-detail.html'
+def product_detail(request, id):
+    product = get_object_or_404(Product, id=id)
+    return render(request, 'products/product-detail.html', {'product': product})

@@ -22,11 +22,20 @@
     background: #9be010;
 }
 
-.grid  button {
+.grid button {
     background: gray;
     border: 0;
     color: white;
     padding: 10px;
     width: 100%;
     bottom: 0;
+}
+
+.category {
+    margin-bottom: 20px;
+}
+
+
+.categories ul {
+    display: flex;
 }

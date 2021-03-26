@@ -16,7 +16,7 @@
                                 <i class="material-icons">share</i>
                                 <i class="material-icons">favorite_border</i>
                             </div>
-                            <img  src="{{ object.image.url }}"
+                            <img src="{{ product.image.url }}"
                                  alt="green apple slice">
                         </div>
                         <div class="photo-album">
@@ -39,11 +39,11 @@
                 </div>
                 <div class="product__info">
                     <div class="title">
-                        <h1>{{ object.name }}</h1>
+                        <h1>{{ product.name }}</h1>
                         <span>COD: 45999</span>
                     </div>
                     <div class="price">
-                        price <span>{{ object.price }}</span>
+                        price <span>{{ product.price }}</span>
                     </div>
                     <div class="variant">
                         <h3>SELECT A COLOR</h3>
@@ -65,13 +65,13 @@
                     <div class="description">
                         <h3>Description</h3>
                         <ul>
-                            <li>{{ object.description }}</li>
+                            <li>{{ product.description }}</li>
                         </ul>
                     </div>
                     <div class="description">
                         <h3>Category(ies)</h3>
                         <ul>
-                            {% for c in object.category.all %}
+                            {% for c in product.category.all %}
                                 <li>{{ c.name }}</li>
                             {% endfor %}
                         </ul>

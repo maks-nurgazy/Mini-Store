@@ -1,9 +1,11 @@
 from PIL import Image
 from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
     name = models.CharField(max_length=20)
+    slug = models.SlugField(max_length=30, db_index=True)
     description = models.CharField(max_length=256, help_text="Description for category")
 
     def __str__(self):
@@ -11,6 +13,9 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = "Categories"
+
+    def get_absolute_url(self):
+        return reverse('products_by_category', args=[self.slug])
 
 
 class Product(models.Model):
@@ -31,3 +36,6 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('product_detail', args=[self.id])
